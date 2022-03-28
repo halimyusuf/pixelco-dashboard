@@ -1,6 +1,8 @@
+import { Grid } from "@mui/material";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import ChartCards from "../components/ChartCards";
 
 export default function Home() {
   return (
@@ -11,7 +13,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>shhsjjsj</div>
+      <div>
+        <Grid container spacing={2}>
+          <Grid item container sm={6} md={8} lg={9} spacing={2}>
+            <ChartCards />
+          </Grid>
+          <Grid item sm={6} md={4} lg={3}>
+            two
+          </Grid>
+        </Grid>
+      </div>
     </div>
   );
 }
