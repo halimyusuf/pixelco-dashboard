@@ -24,6 +24,7 @@ a {
   --accent-4: #e03a45;
   --accent-5: #34e4b5;
   --gradient-1: linear-gradient(90deg, #dc2430 0%, #7b4397 99.99%);
+  --gradient-2: linear-gradient(90deg, #f4d35e 0%, #7b4397 99.99%);
 }
 
 body {
