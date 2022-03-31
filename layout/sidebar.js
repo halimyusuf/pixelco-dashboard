@@ -4,12 +4,8 @@ import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import FileSvg from "../public/icons/file-text.svg";
-import { IconButton, SvgIcon } from "@mui/material";
+import { SvgIcon } from "@mui/material";
 import Navbar from "./navbar";
 import { sideNavLinks1, sideNavLinks2, sideNavLinks3 } from "../data/sidenav";
 import { useState } from "react";
@@ -41,7 +37,12 @@ export default function Sidebar({
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <Navbar drawerWidth={drawerWidth} open={open} />
+      <Navbar
+        drawerWidth={drawerWidth}
+        open={open}
+        handleDrawerOpen={handleDrawerOpen}
+        handleDrawerClose={handleDrawerClose}
+      />
       <Drawer
         sx={{
           width: drawerWidth,
@@ -52,13 +53,17 @@ export default function Sidebar({
             background: "var(--accent-2)",
           },
         }}
-        variant="persistent"
+        variant="permanent"
         anchor="left"
         open={open}
       >
         <DrawerHeader>
           <Box
-            sx={{ margin: "0 auto", display: "flex", justifyContent: "center" }}
+            sx={{
+              margin: "0 auto",
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
             <SvgIcon component={Logo} inheritViewBox />
             <Typography
@@ -88,7 +93,11 @@ export default function Sidebar({
           </List>
           {/* <Divider sx={{ color: "var(--accent-3)" }} /> */}
           <Box
-            sx={{ height: "1px", background: "var(--accent-3)", width: "100%" }}
+            sx={{
+              height: "1px",
+              background: "var(--accent-3)",
+              width: "100%",
+            }}
           />
           <List>
             <SideNavList
@@ -100,7 +109,11 @@ export default function Sidebar({
 
           {/* <Divider sx={{ color: "var(--accent-3)" }} /> */}
           <Box
-            sx={{ height: "1px", background: "var(--accent-3)", width: "100%" }}
+            sx={{
+              height: "1px",
+              background: "var(--accent-3)",
+              width: "100%",
+            }}
           />
 
           <List>
@@ -112,6 +125,7 @@ export default function Sidebar({
           </List>
         </Box>
       </Drawer>
+      )
     </Box>
   );
 }

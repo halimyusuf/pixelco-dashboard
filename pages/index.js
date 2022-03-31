@@ -34,7 +34,7 @@ export default function Home() {
             <Grid item xs={12}>
               <Card
                 sx={{
-                  margin: "1rem 0",
+                  // margin: "1rem 0",
                   background: "var(--accent-2)",
                   borderRadius: "10px",
                   textAlign: "center",
@@ -52,7 +52,7 @@ export default function Home() {
               <LatestTransactions />
             </Grid>
           </Grid>
-          <Grid item sm={12} md={6} lg={4}>
+          <Grid item xs={12} md={6} lg={4}>
             <AtmCard />
             <Box sx={{ margin: "1rem 0" }}>
               <Analytics />

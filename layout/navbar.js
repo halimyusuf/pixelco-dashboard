@@ -6,17 +6,19 @@ import { styled, useTheme } from "@mui/material/styles";
 import SearchIcon from "../public/icons/search.svg";
 import BellIcon from "../public/icons/bell.svg";
 import ChevronDown from "../public/icons/chevron-down.svg";
+import Logo from "../public/nav/Standard Collection 13.svg";
+import Menu from "../public/icons/menu.svg";
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open, width }) => ({
+})(({ theme, open, dwidth }) => ({
   transition: theme.transitions.create(["margin", "width"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(open && {
-    width: `calc(100% - ${width}px)`,
-    marginLeft: `${width}px`,
+    width: `calc(100vw - ${dwidth}px)`,
+    marginLeft: `${dwidth}px`,
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
@@ -25,7 +27,7 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 export default function Navbar(props) {
-  const { drawerWidth, open } = props;
+  const { drawerWidth, open, handleDrawerClose, handleDrawerOpen } = props;
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -47,25 +49,73 @@ export default function Navbar(props) {
   return (
     <AppBar
       open={open}
-      width={drawerWidth}
+      dwidth={drawerWidth}
       elevation={0}
       position="static"
       sx={{
-        width: `calc(100% - ${drawerWidth}px)`,
-        ml: `${drawerWidth}px`,
+        // width: `calc(100% - ${drawerWidth}px)`,
+        // ml: `${drawerWidth}px`,
         background: "var(--accent-2)",
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
-            variant="body2"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, color: "var(--accent-1)" }}
-          >
-            Hello, Maaz
-          </Typography>
+          <Box sx={{ flexGrow: 1 }}>
+            <Typography
+              variant="body2"
+              noWrap
+              component="div"
+              sx={{
+                color: "var(--accent-1)",
+                display: { xs: "none", md: "block" },
+              }}
+            >
+              Hello, Maaz
+            </Typography>
+
+            <Box
+              noWrap
+              sx={{
+                color: "var(--accent-1)",
+                display: { xs: "flex", md: "none" },
+              }}
+            >
+              <SvgIcon component={Logo} inheritViewBox />
+              <Typography
+                variant="h6"
+                sx={{
+                  fontSize: "15px",
+                  fontWeight: 700,
+                  marginLeft: "5px",
+                  color: "var(--accent-1)",
+                }}
+              >
+                Pixel Co.
+              </Typography>
+            </Box>
+            {/* <Typography
+              variant="body2"
+              noWrap
+              component="div"
+              sx={{
+                color: "var(--accent-1)",
+                display: { xs: "flex", md: "none" },
+              }}
+            >
+              <SvgIcon component={Logo} inheritViewBox />
+              <Typography
+                variant="h6"
+                sx={{
+                  fontSize: "15px",
+                  fontWeight: 700,
+                  marginLeft: "5px",
+                  color: "var(--accent-1)",
+                }}
+              >
+                Pixel Co.
+              </Typography>
+            </Typography> */}
+          </Box>
 
           <Box sx={{ flexGrow: 0, display: "flex", alignItems: "center" }}>
             <Box>
@@ -102,7 +152,28 @@ export default function Navbar(props) {
               </IconButton>
             </Tooltip>
 
-            <Box sx={{ width: "55px", margin: "0 0.5rem" }}>
+            <IconButton
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
+              onClick={handleDrawerOpen}
+            >
+              <SvgIcon
+                component={Menu}
+                sx={{
+                  fill: "var(--accent-2)",
+                }}
+                inheritViewBox
+              />
+            </IconButton>
+
+            <Box
+              sx={{
+                width: "55px",
+                margin: "0 0.5rem",
+                display: { xs: "none", sm: "block" },
+              }}
+            >
               <Typography
                 variant="body2"
                 noWrap
@@ -113,11 +184,13 @@ export default function Navbar(props) {
               </Typography>
             </Box>
 
-            <Box>
+            <Box sx={{ display: { xs: "none", sm: "block" } }}>
               <IconButton>
                 <SvgIcon
                   component={ChevronDown}
-                  sx={{ fill: "var(--accent-2)" }}
+                  sx={{
+                    fill: "var(--accent-2)",
+                  }}
                 />
               </IconButton>
             </Box>
