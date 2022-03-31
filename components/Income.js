@@ -89,7 +89,7 @@ export default function Income() {
                       sx={{
                         color: "var(--accent-1)",
                         fontWeight: 400,
-                        fontSize: "13px",
+                        fontSize: "12px",
                         textAlign: "left",
                       }}
                     >
@@ -133,6 +133,7 @@ export default function Income() {
                           height: `${Math.round((a.amount / 30000) * 100)}%`,
                           width: "100%",
                           background: "var(--gradient-3)",
+                          borderRadius: "100px",
                         }}
                       >
                         {" "}
@@ -146,7 +147,7 @@ export default function Income() {
                         sx={{
                           color: "var(--accent-1)",
                           fontWeight: 400,
-                          fontSize: "12px",
+                          fontSize: "10px",
                           textAlign: "center",
                         }}
                       >
