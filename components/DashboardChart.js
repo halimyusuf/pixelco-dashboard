@@ -24,7 +24,7 @@ ChartJS.register(
 
 function generateRandom() {
   const min = 0;
-  const max = 3;
+  const max = 5;
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
@@ -53,7 +53,7 @@ export const options = {
   },
 };
 
-const labels = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July"];
+const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
 
 export const data = {
   labels,
@@ -61,15 +61,20 @@ export const data = {
   datasets: [
     {
       // label: "Dataset 1",
-      data: labels.map((a) => a.length + generateRandom()),
+      data: labels.map((a) => generateRandom()),
       borderColor: "#DEA34B",
       backgroundColor: "rgba(255, 99, 132, 0.5)",
+      // radius: 6,
+      lineTension: 0.5,
+      radius: 4,
     },
     {
       // label: "Dataset 2",
-      data: labels.map((a) => a.length + generateRandom()),
+      data: labels.map((a) => generateRandom()),
       borderColor: "#AE2EEA",
       backgroundColor: "rgba(53, 162, 235, 0.5)",
+      lineTension: 0.5,
+      radius: 4,
     },
   ],
 };
