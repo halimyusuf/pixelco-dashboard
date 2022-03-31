@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import Navbar from "./navbar";
-import Sidebar from "./Sidebar";
+import Sidebar from "./sidebar";
 import { styled, useTheme } from "@mui/material/styles";
 import { useState } from "react";
 
