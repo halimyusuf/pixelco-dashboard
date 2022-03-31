@@ -5,6 +5,9 @@ import styles from "../styles/Home.module.css";
 import ChartCards from "../components/ChartCards";
 import AtmCard from "../components/AtmCard";
 import { DashboardChart } from "../components/DashboardChart";
+import Income from "../components/Income";
+import LatestTransactions from "../components/LatestTransactions";
+import { color } from "@mui/system";
 
 export default function Home() {
   return (
@@ -17,9 +20,17 @@ export default function Home() {
 
       <div>
         <Grid container spacing={2}>
-          <Grid item container sm={6} md={8} lg={9} spacing={2}>
+          <Grid
+            item
+            container
+            sm={6}
+            md={8}
+            lg={9}
+            spacing={2}
+            // sx={{ paddin: "1rem 0" }}
+          >
             <ChartCards />
-            <Grid item xs={12} spacing={2}>
+            <Grid item xs={12}>
               <Card
                 sx={{
                   margin: "1rem 0",
@@ -32,6 +43,12 @@ export default function Home() {
                   <DashboardChart />
                 </CardContent>
               </Card>
+            </Grid>
+            <Grid item xs={12} lg={6}>
+              <Income />
+            </Grid>
+            <Grid item xs={12} lg={6}>
+              <LatestTransactions />
             </Grid>
           </Grid>
           <Grid item sm={6} md={4} lg={3}>
