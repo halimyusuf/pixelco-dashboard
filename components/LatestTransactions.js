@@ -77,8 +77,7 @@ export default function LatestTransactions() {
                     </Typography>
                   </Box>
                   <Box sx={{ color: `var(--accent-${t.deposit ? "5" : "4"})` }}>
-                    $ {t.deposit ? "+" : "-"}
-                    {t.amount.toLocaleString()}
+                    {t.deposit ? "+" : "-"}${t.amount.toLocaleString()}
                   </Box>
                 </Box>
               ))}
