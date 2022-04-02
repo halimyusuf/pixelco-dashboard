@@ -1,4 +1,4 @@
-import { Card, CardContent, SvgIcon, Typography } from "@mui/material";
+import { Card, CardContent, Grid, SvgIcon, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import MoreHor from "../public/icons/more-horizontal.svg";
 import Vector1 from "../public/atm card/Vector1.svg";

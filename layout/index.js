@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import Navbar from "./navbar";
 import Sidebar from "./sidebar";
+import TempSidebar from "./TempSidebar";
 import { styled, useTheme } from "@mui/material/styles";
 import { useState } from "react";
 
@@ -25,6 +25,15 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   })
 );
 
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+  justifyContent: "flex-end",
+}));
+
 export default function Layout({ children }) {
   const [open, setOpen] = useState(true);
 
@@ -38,16 +47,28 @@ export default function Layout({ children }) {
 
   return (
     <div>
-      <Sidebar
-        drawerWidth={drawerWidth}
-        open={open}
-        handleDrawerOpen={handleDrawerOpen}
-        handleDrawerClose={handleDrawerClose}
-      />
-      <Main open={open}>
-        {/* <DrawerHeader /> */}
-        <Box>{children}</Box>
-      </Main>
+      <Box sx={{ display: { xs: "none", md: "block" } }}>
+        <Sidebar
+          drawerWidth={drawerWidth}
+          open={open}
+          handleDrawerOpen={handleDrawerOpen}
+          handleDrawerClose={handleDrawerClose}
+        >
+          <Box>{children}</Box>
+        </Sidebar>
+        <Main open={open}>{/* <DrawerHeader /> */}</Main>
+      </Box>
+      <Box sx={{ display: { xs: "block", md: "none" } }}>
+        <TempSidebar
+          drawerWidth={drawerWidth}
+          open={open}
+          handleDrawerOpen={handleDrawerOpen}
+          handleDrawerClose={handleDrawerClose}
+        >
+          <Box>{children}</Box>
+        </TempSidebar>
+        <Main open={open}>{/* <DrawerHeader /> */}</Main>
+      </Box>
     </div>
   );
 }

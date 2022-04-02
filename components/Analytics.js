@@ -1,4 +1,11 @@
-import { Box, Card, CardContent, SvgIcon, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  Grid,
+  SvgIcon,
+  Typography,
+} from "@mui/material";
 import MoreHor from "../public/icons/more-horizontal.svg";
 import { analytics } from "../data/analytics";
 

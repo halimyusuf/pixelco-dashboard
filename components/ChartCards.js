@@ -13,10 +13,11 @@ export default function ChartCards() {
   return (
     <>
       {cardsContent.map((card) => (
-        <Grid key={card.price} item xs={12} md={6} lg={4}>
+        <Grid key={card.price} item xs={12} sm={6} md={6} lg={4}>
           <Card
             sx={{
-              maxWidth: 345,
+              maxWidth: "100%",
+              width: "400px",
               background: "var(--accent-2)",
               position: "relative",
             }}

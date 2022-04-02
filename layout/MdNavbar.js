@@ -1,55 +1,21 @@
 import * as React from "react";
 import { Typography, IconButton, Toolbar, Box } from "@mui/material";
-import MuiAppBar from "@mui/material/AppBar";
+import AppBar from "@mui/material/AppBar";
 import { SvgIcon, Tooltip, Avatar, Container } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 import SearchIcon from "../public/icons/search.svg";
 import BellIcon from "../public/icons/bell.svg";
 import ChevronDown from "../public/icons/chevron-down.svg";
-import Logo from "../public/nav/Standard Collection 13.svg";
+import SLogo from "../public/logo.svg";
 import Menu from "../public/icons/menu.svg";
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open, dwidth }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100vw - ${dwidth}px)`,
-    marginLeft: `${dwidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
 export default function Navbar(props) {
-  const { drawerWidth, open, handleDrawerClose, handleDrawerOpen } = props;
+  const { toggleDrawer } = props;
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
   return (
     <AppBar
-      open={open}
-      dwidth={drawerWidth}
       elevation={0}
       position="static"
       sx={{
@@ -80,7 +46,7 @@ export default function Navbar(props) {
                 display: { xs: "flex", md: "none" },
               }}
             >
-              <SvgIcon component={Logo} inheritViewBox />
+              <SvgIcon component={SLogo} inheritViewBox />
               <Typography
                 variant="h6"
                 sx={{
@@ -90,7 +56,7 @@ export default function Navbar(props) {
                   color: "var(--accent-1)",
                 }}
               >
-                Pixel Co.
+                Pixel Co..
               </Typography>
             </Box>
             {/* <Typography
@@ -156,7 +122,7 @@ export default function Navbar(props) {
               sx={{
                 display: { xs: "block", md: "none" },
               }}
-              onClick={handleDrawerOpen}
+              onClick={() => toggleDrawer(true)}
             >
               <SvgIcon
                 component={Menu}

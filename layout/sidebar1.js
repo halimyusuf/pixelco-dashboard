@@ -1,59 +1,20 @@
-import { useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar from "@mui/material/AppBar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import FileSvg from "../public/icons/file-text.svg";
 import { SvgIcon } from "@mui/material";
-import Navbar from "./navbar1";
+import Navbar from "./navbar";
 import { sideNavLinks1, sideNavLinks2, sideNavLinks3 } from "../data/sidenav";
+import { useState } from "react";
 import SideNavList from "../components/nav/SidenavList";
 import Logo from "../public/nav/logo.svg";
 
 function FileIcon() {
   return <SvgIcon component={FileSvg} sx={{ fill: "var(--accent-2)" }} />;
 }
-
-const drawerWidth = 240;
-
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  })
-);
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -65,11 +26,10 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function Sidebar({
-  open,
   drawerWidth,
+  open,
   handleDrawerOpen,
   handleDrawerClose,
-  children,
 }) {
   const theme = useTheme();
   const [selectedNav, setSelectedNav] = useState("Dashboard");
@@ -93,7 +53,7 @@ export default function Sidebar({
             background: "var(--accent-2)",
           },
         }}
-        variant="persistent"
+        variant="permanent"
         anchor="left"
         open={open}
       >
@@ -169,10 +129,7 @@ export default function Sidebar({
           </List>
         </Box>
       </Drawer>
-      <Main open={open}>
-        <DrawerHeader />
-        {children}
-      </Main>
+      )
     </Box>
   );
 }
