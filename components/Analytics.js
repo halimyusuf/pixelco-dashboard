@@ -54,11 +54,9 @@ export default function Analytics() {
                     height: "100%",
                     borderRadius: "90px",
                     background: "var(--gradient-3)",
-                    marginLeft: "0.25rem",
+                    // marginLeft: "0.25rem",
                   }}
-                >
-                  {" "}
-                </Box>
+                ></Box>
               </Box>
             </Box>
           ))}
