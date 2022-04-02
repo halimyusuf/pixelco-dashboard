@@ -80,7 +80,9 @@ export default function Navbar(props) {
                 display: { xs: "flex", md: "none" },
               }}
             >
-              <SvgIcon component={SLogo} inheritViewBox />
+              {/* <SvgIcon component={SLogo} inheritViewBox /> */}
+              <img src="/Group.svg" alt="" />
+
               <Typography
                 variant="h6"
                 sx={{

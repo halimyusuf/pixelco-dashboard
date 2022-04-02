@@ -1,21 +1,27 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-import Button from "@mui/material/Button";
 import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import { styled } from "@mui/material/styles";
-
 import FileSvg from "../public/icons/file-text.svg";
-import { SvgIcon } from "@mui/material";
+import { SvgIcon, Typography } from "@mui/material";
 import Navbar from "./MdNavbar";
+import { sideNavLinks1, sideNavLinks2, sideNavLinks3 } from "../data/sidenav";
+import SideNavList from "../components/nav/SidenavList";
+import Logo from "../public/Group.svg";
 
 function FileIcon() {
   return <SvgIcon component={FileSvg} sx={{ fill: "var(--accent-2)" }} />;
 }
+
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+  justifyContent: "flex-end",
+}));
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -28,8 +34,9 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   })
 );
 
-export default function SwipeableTemporaryDrawer({ children }) {
+export default function SwipeableTemporaryDrawer({ children, drawerWidth }) {
   const [state, setState] = React.useState(false);
+  const [selectedNav, setSelectedNav] = React.useState("Dashboard");
 
   const anchor = "left";
 
@@ -45,49 +52,94 @@ export default function SwipeableTemporaryDrawer({ children }) {
     setState(open);
   };
 
-  const list = (anchor) => (
-    <Box
-      sx={{ width: 250 }}
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <FileIcon /> : <FileIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <FileIcon /> : <FileIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
   return (
     <div>
       <React.Fragment>
         <Navbar toggleDrawer={setState} />
         <Main>{children}</Main>
         <SwipeableDrawer
+          sx={{
+            width: drawerWidth,
+            flexShrink: 0,
+            "& .MuiDrawer-paper": {
+              width: drawerWidth,
+              boxSizing: "border-box",
+              background: "var(--accent-2)",
+            },
+          }}
           anchor={anchor}
           open={state}
           onClose={toggleDrawer(false)}
           onOpen={toggleDrawer(true)}
         >
-          {list(anchor)}
+          <DrawerHeader>
+            <Box
+              sx={{
+                margin: "0 auto",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              {/* <SvgIcon component={Logo} inheritViewBox /> */}
+              <img src="/Group.svg" alt="" />
+
+              <Typography
+                variant="h6"
+                sx={{
+                  fontSize: "15px",
+                  fontWeight: 700,
+                  marginLeft: "8px",
+                  color: "var(--accent-1)",
+                }}
+              >
+                Pixel Co.
+              </Typography>
+            </Box>
+          </DrawerHeader>
+          <Box
+            sx={{ height: "1px", background: "var(--accent-3)", width: "100%" }}
+          />
+          <Box sx={{ paddingLeft: "20px" }}>
+            <List>
+              <SideNavList
+                navLinks={sideNavLinks1}
+                selectedNav={selectedNav}
+                setSelectedNav={setSelectedNav}
+              />
+            </List>
+            {/* <Divider sx={{ color: "var(--accent-3)" }} /> */}
+            <Box
+              sx={{
+                height: "1px",
+                background: "var(--accent-3)",
+                width: "100%",
+              }}
+            />
+            <List>
+              <SideNavList
+                navLinks={sideNavLinks2}
+                selectedNav={selectedNav}
+                setSelectedNav={setSelectedNav}
+              />
+            </List>
+
+            {/* <Divider sx={{ color: "var(--accent-3)" }} /> */}
+            <Box
+              sx={{
+                height: "1px",
+                background: "var(--accent-3)",
+                width: "100%",
+              }}
+            />
+
+            <List>
+              <SideNavList
+                navLinks={sideNavLinks3}
+                selectedNav={selectedNav}
+                setSelectedNav={setSelectedNav}
+              />
+            </List>
+          </Box>
         </SwipeableDrawer>
       </React.Fragment>
     </div>

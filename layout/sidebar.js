@@ -11,7 +11,7 @@ import { SvgIcon } from "@mui/material";
 import Navbar from "./navbar1";
 import { sideNavLinks1, sideNavLinks2, sideNavLinks3 } from "../data/sidenav";
 import SideNavList from "../components/nav/SidenavList";
-import Logo from "../public/nav/logo.svg";
+import Logo from "../public/Group.svg";
 
 function FileIcon() {
   return <SvgIcon component={FileSvg} sx={{ fill: "var(--accent-2)" }} />;
@@ -105,17 +105,19 @@ export default function Sidebar({
               justifyContent: "center",
             }}
           >
-            <SvgIcon
+            {/* <SvgIcon
               component={Logo}
               inheritViewBox
               sx={{ display: "block" }}
-            />
+            /> */}
+            <img src="/Group.svg" alt="" />
+
             <Typography
               variant="h6"
               sx={{
                 fontSize: "15px",
                 fontWeight: 700,
-                marginLeft: "5px",
+                marginLeft: "8px",
                 color: "var(--accent-1)",
               }}
             >

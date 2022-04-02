@@ -60,7 +60,7 @@ export default function Home() {
               xs={12}
               sm={6}
               md={12}
-              sx={{ display: { xs: "none", sm: "block" } }}
+              // sx={{ display: { xs: "none", sm: "initial" } }}
             >
               <AtmCard />
             </Grid>

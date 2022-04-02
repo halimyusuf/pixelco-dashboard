@@ -6,7 +6,7 @@ import { styled, useTheme } from "@mui/material/styles";
 import SearchIcon from "../public/icons/search.svg";
 import BellIcon from "../public/icons/bell.svg";
 import ChevronDown from "../public/icons/chevron-down.svg";
-import SLogo from "../public/logo.svg";
+import SLogo from "../public/Group.svg";
 import Menu from "../public/icons/menu.svg";
 
 export default function Navbar(props) {
@@ -46,17 +46,18 @@ export default function Navbar(props) {
                 display: { xs: "flex", md: "none" },
               }}
             >
-              <SvgIcon component={SLogo} inheritViewBox />
+              {/* <SvgIcon component={SLogo} inheritViewBox /> */}
+              <img src="/Group.svg" alt="" />
               <Typography
                 variant="h6"
                 sx={{
                   fontSize: "15px",
                   fontWeight: 700,
-                  marginLeft: "5px",
+                  marginLeft: "8px",
                   color: "var(--accent-1)",
                 }}
               >
-                Pixel Co..
+                Pixel Co.
               </Typography>
             </Box>
             {/* <Typography
@@ -137,7 +138,7 @@ export default function Navbar(props) {
               sx={{
                 width: "55px",
                 margin: "0 0.5rem",
-                display: { xs: "none", sm: "block" },
+                display: { xs: "none", md: "block" },
               }}
             >
               <Typography
@@ -150,7 +151,7 @@ export default function Navbar(props) {
               </Typography>
             </Box>
 
-            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Box sx={{ display: { xs: "none", md: "block" } }}>
               <IconButton>
                 <SvgIcon
                   component={ChevronDown}
