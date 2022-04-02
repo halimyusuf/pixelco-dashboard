@@ -21,7 +21,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
+      <div style={{ maxWidth: "100%" }}>
         <Grid container spacing={2}>
           <Grid item container sm={12} md={7} lg={9} spacing={2}>
             <ChartCards />
@@ -54,13 +54,26 @@ export default function Home() {
               <LatestTransactions />
             </Grid>
           </Grid>
-          <Grid container item xs={12} sm={12} md={5} lg={3} spacing={2}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={5}
+            lg={3}
+            minHeight
+            spacing={2}
+            direction="column"
+            flexWrap="wrap"
+          >
             <Grid
               item
               xs={12}
               sm={6}
               md={12}
-              // sx={{ display: { xs: "none", sm: "initial" } }}
+              sx={{
+                paddingBottom: "1rem",
+                display: { xs: "none", sm: "block" },
+              }}
             >
               <AtmCard />
             </Grid>

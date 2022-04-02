@@ -10,7 +10,7 @@ export default function AtmCard() {
       sx={{
         // maxWidth: 345,
         background: "var(--accent-2)",
-        position: "relative",
+        // position: "relative",
       }}
       elevation={0}
     >
